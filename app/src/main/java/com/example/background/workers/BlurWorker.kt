@@ -12,10 +12,14 @@ import androidx.work.workDataOf
 import com.example.background.KEY_IMAGE_URI
 import com.example.background.R
 
+private const val TAG = "BlueWorker"
 class BlurWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
+
     override fun doWork(): Result {
         val appContext = applicationContext
+        val resourceUri = inputData.getString(KEY_IMAGE_URI)
         makeStatusNotification("Blurring image", appContext)
+        sleep()
 
         return try {
             val resourceUri = null
